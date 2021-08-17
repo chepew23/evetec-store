@@ -20,7 +20,7 @@
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                @if (Auth::check() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="60">
                             <x-slot name="trigger">
@@ -70,6 +70,7 @@
                 @endif
 
                 <!-- Settings Dropdown -->
+                @if (Auth::check())
                 <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -121,6 +122,7 @@
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
+                @endif
             </div>
 
             <!-- Hamburger -->
@@ -144,6 +146,7 @@
         </div>
 
         <!-- Responsive Settings Options -->
+        @if (Auth::check())
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -213,5 +216,6 @@
                 @endif
             </div>
         </div>
+        @endif
     </div>
 </nav>

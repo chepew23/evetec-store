@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\ExampleController;
+Route::resource('orders', OrderController::class);
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('orders.create'));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-Route::get('/example', [ExampleController::class, 'index'])->name('example.index');
