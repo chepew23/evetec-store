@@ -115,6 +115,28 @@
     @apply bg-blue-600 hover:bg-blue-500;
 }
 
+.order-index {
+    @apply bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4;
+}
 
+.order-index table {
+    @apply table-fixed w-full;
+}
+
+.order-index table thead {
+    @apply table-fixed w-full;
+}
+
+.order-index table thead tr {
+    @apply bg-gray-100;
+}
+
+.order-index table thead tr th {
+    @apply capitalize;
+}
+
+.order-index table tbody tr td {
+    @apply border px-4 py-2;
+}
 
 
