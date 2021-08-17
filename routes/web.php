@@ -15,6 +15,8 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::resource('orders', OrderController::class);
+Route::get('/orders/{reference}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
+    Route::get('/orders/{reference}/pay/processing', [OrderController::class, 'payProcessing'])->name('orders.pay_processing');
 
 Route::get('/', function () {
     return redirect(route('orders.create'));

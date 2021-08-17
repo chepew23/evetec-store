@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Integrations\Payment\Purchase;
 use App\Models\Order;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -21,7 +25,7 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -87,5 +91,17 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function checkout(string $reference)
+    {
+        $order = Order::findOneByReference($reference);
+
+        return view('orders.checkout', compact('order'));
+    }
+
+    public function payProcessing(string $reference)
+    {
+        return view('orders.pay_processing', compact('reference'));
     }
 }

@@ -16,6 +16,8 @@ class AddProductColumnToOrdersTable extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->string('customer_surname', 80);
             $table->string('customer_address');
+            $table->string('customer_document_type');
+            $table->string('customer_document');
             $table->string('product_name');
             $table->double('product_price');
             $table->bigInteger('product_quantity');

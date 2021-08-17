@@ -53,5 +53,68 @@
     @apply inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus-visible:ring-green-700 focus-visible:ring-2 transition ease-in-out duration-150 sm:text-sm sm:leading-5;
 }
 
+.order-checkout {
+    @apply bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4;
+}
+
+.order-checkout__field {
+    @apply block my-4;
+}
+
+.order-checkout__field label {
+    @apply block text-gray-700 text-sm font-bold mb-2 capitalize;
+}
+
+.order-checkout__field span {
+    @apply block text-gray-700 text-sm font-semibold mb-2;
+}
+
+.order-checkout__button {
+    @apply mx-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto;
+    @apply inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus-visible:ring-green-700 focus-visible:ring-2 transition ease-in-out duration-150 sm:text-sm sm:leading-5;
+}
+
+.order-checkout {
+    @apply bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4;
+}
+
+.order-pay-processing {
+    @apply bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4;
+}
+
+.order-pay-processing h5 {
+    @apply mx-3 my-3 sm:mt-0 sm:w-auto text-base font-bold;
+}
+
+.order-pay-processing p {
+    @apply mx-3 my-3 sm:mt-0 sm:w-auto;
+}
+
+.order-pay-processing__status {
+    @apply mx-3 rounded-md shadow-sm sm:mt-0 sm:w-auto capitalize;
+    @apply justify-center w-full rounded-md border border-transparent px-4 py-2 bg-gray-600 text-base leading-6 font-bold text-white shadow-sm hover:bg-gray-500 sm:text-sm sm:leading-5;
+}
+
+.order-pay-processing__status--approved {
+    @apply bg-green-600 hover:bg-green-500;
+}
+
+.order-pay-processing__status--error {
+    @apply bg-red-600 hover:bg-red-500;
+}
+
+.order-pay-processing__status--pending {
+    @apply bg-yellow-600 hover:bg-yellow-500;
+}
+
+.order-pay-processing__status--created {
+    @apply bg-blue-600 hover:bg-blue-500;
+}
+
+.order-pay-processing__status--success {
+    @apply bg-blue-600 hover:bg-blue-500;
+}
+
+
 
 

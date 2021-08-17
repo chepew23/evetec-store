@@ -4,6 +4,9 @@
 namespace App\Integrations\Payment;
 
 
+use Dnetix\Redirection\Entities\Status;
+use Dnetix\Redirection\Exceptions\PlacetoPayException;
+use Dnetix\Redirection\Message\RedirectResponse;
 use Dnetix\Redirection\PlacetoPay;
 use Exception;
 
@@ -12,9 +15,11 @@ class Client
     /** @var PlacetoPay $placetopay */
     protected $placetopay;
 
-    const INTERNAL_ERROR_STATUS = 'INTERNAL_ERROR_STATUS';
-    const REQUEST_ID_FAILED_STATUS = 'REQUEST_ID_FAILED_STATUS';
-    const RESQUEST_IS_SUCCESS_SATATUS =  'RESQUEST_IS_SUCCESS_SATATUS';
+    const INTERNAL_ERROR_STATUS = 'error';
+    const REQUEST_ID_FAILED_STATUS = 'failed';
+    const REQUEST_IS_PENDING_STATUS =  'pending';
+    const REQUEST_IS_SUCCESS_STATUS =  'success';
+    const REQUEST_IS_APPROVED_STATUS =  'approved';
 
     public function __construct()
     {
@@ -29,7 +34,7 @@ class Client
         ]);
     }
 
-    public function queryByRequestId($requestId)
+    public function queryByRequestId($requestId): string
     {
         try {
             $response = $this->placetopay->query($requestId);
@@ -43,9 +48,27 @@ class Client
             return self::REQUEST_ID_FAILED_STATUS;
         }
 
-        if ($status->isSuccessful()) {
-            return self::RESQUEST_IS_SUCCESS_SATATUS;
+        if (in_array($status, [Status::ST_PENDING, Status::ST_PENDING_VALIDATION])) {
+            return self::REQUEST_IS_PENDING_STATUS;
         }
+
+        if ($status->isSuccessful()) {
+            return self::REQUEST_IS_SUCCESS_STATUS;
+        }
+
+        if ($status->isApproved()) {
+            return self::REQUEST_IS_APPROVED_STATUS;
+        }
+
+        throw new Exception("Response with status don't recognized");
+    }
+
+    /**
+     * @throws PlacetoPayException
+     */
+    public function request(array $request): RedirectResponse
+    {
+        return $this->placetopay->request($request);
     }
 
 }

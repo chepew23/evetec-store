@@ -11,6 +11,8 @@ class Form extends Component
 {
     public $customer_name;
     public $customer_surname;
+    public $customer_document_type;
+    public $customer_document;
     public $customer_email;
     public $customer_mobile;
     public $customer_address;
@@ -22,6 +24,8 @@ class Form extends Component
     protected $rules = [
         'customer_name' => 'required',
         'customer_surname' => 'required',
+        'customer_document_type' => 'required',
+        'customer_document' => 'required',
         'customer_email' => 'required',
         'customer_mobile' => 'required',
         'customer_address' => 'required',
@@ -44,6 +48,8 @@ class Form extends Component
         $values = [
             'customer_name' => $this->customer_name,
             'customer_surname' => $this->customer_surname,
+            'customer_document_type' => $this->customer_document_type,
+            'customer_document' => $this->customer_document,
             'customer_email' => $this->customer_email,
             'customer_mobile' => $this->customer_mobile,
             'customer_address' => $this->customer_address,
@@ -55,7 +61,7 @@ class Form extends Component
         $order = new Order($values);
         $order->save();
 
-        return redirect()->to(route('orders.create'));
+        return redirect()->to(route('orders.checkout', ['reference' => $order->reference]));
     }
 
     public function render()
