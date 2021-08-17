@@ -12,6 +12,20 @@
                 <input name="customer_surname" type="text" placeholder="@lang('customer.surname_placeholder')" wire:model="customer_surname"/>
                 @error('customer_surname') <span>{{ $message }}</span> @enderror
             </div>
+            <div class="order-form__input @error('customer_document_type') order-form__input--error @enderror">
+                <label for="customer_document_type">@lang('customer.document_type')</label>
+                <select name="customer_document_type" wire:model="customer_document_type">
+                    <option selected value="CC">CC</option>
+                    <option value="NIT">NIT</option>
+                    <option value="Passport">Passport</option>
+                </select>
+                @error('customer_document_type') <span>{{ $message }}</span> @enderror
+            </div>
+            <div class="order-form__input @error('customer_document') order-form__input--error @enderror">
+                <label for="customer_document">@lang('customer.document')</label>
+                <input name="customer_document" type="text" placeholder="@lang('customer.document_placeholder')" wire:model="customer_document"/>
+                @error('customer_document') <span>{{ $message }}</span> @enderror
+            </div>
             <div class="order-form__input @error('customer_email') order-form__input--error @enderror">
                 <label for="customer_email">@lang('customer.email')</label>
                 <input name="customer_email" type="text" placeholder="@lang('customer.email_placeholder')" wire:model="customer_email"/>

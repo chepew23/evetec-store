@@ -11,4 +11,8 @@ return [
     'mobile_placeholder' => 'insert customer mobile',
     'address' => 'address',
     'address_placeholder' => 'insert customer address',
+    'document_type' => 'document type',
+    'document_type_placeholder' => 'insert customer document type',
+    'document' => 'document',
+    'document_placeholder' => 'insert customer document',
 ];

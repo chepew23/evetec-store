@@ -26,8 +26,8 @@ class ProductFactory extends Factory
         $branch = $this->faker->randomElement(['Samsung', 'Apple', 'Motorola']);
         $letter = $this->faker->randomLetter;
         $nb = $this->faker->numberBetween(1, 99);
-        $price = $this->faker->numberBetween(1000, 100000);
-        $price *= 50000;
+        $price = $this->faker->numberBetween(300, 700);
+        $price *= 1000;
 
         return [
             'name' => "{$branch} {$name} {$nb}{$letter} {$color}",
