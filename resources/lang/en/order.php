@@ -2,6 +2,7 @@
 
 return [
     'create' => 'create order',
+    'index' => 'index',
     'buy' => 'buy',
     'checkout' => 'Processing buy',
     'pay_processing' => 'Pay processing status',
@@ -10,6 +11,9 @@ return [
     'customer_mobile' => 'mobile',
     'customer_surname' => 'surname',
     'customer_address' => 'address',
+    'customer_document' => 'document',
+    'status' => 'status',
+    'reference' => 'reference',
     'product_name' => 'product',
     'product_price' => 'price',
     'product_quantity' => 'quantity',
